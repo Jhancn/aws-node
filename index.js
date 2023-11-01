@@ -1,23 +1,14 @@
-const express = require('express');
-const app =express();
-const port =3000;
-app.get('/', (req,res) => {
-    res.send('<h1>Node Demo App </h1> <h4>Message: Success </h4> <p> Version 4.0 </p> <h5> Thank You </h5>')
-})
+const http = require('http');
 
-app.get('/products' , (req,res) => {
-    res.send([
-        {
-            productId :'101',
-            price:100
-        },
-        {
-            productId:'102',
-            price:150
-        }
-    ])
-})
-app.listen(port, () => {
-    console.log(`Demo app is up and listening to port: ${port}`);
-    
-})
+const hostname = 'localhost';
+const port = 8000;
+
+const server = http.createServer((req, res) => {
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'text/plain');
+          res.end('Hello World!\n');
+});
+
+server.listen(port, hostname, () => {
+          console.log(`Server running at http://${hostname}:${port}/`);
+        });
